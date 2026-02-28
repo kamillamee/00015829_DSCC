@@ -1,6 +1,6 @@
 # Task Manager - Distributed Systems & Cloud Computing
 
-**Repository:** [https://github.com/westminster-bis/00015829_DSCC](https://github.com/westminster-bis/00015829_DSCC)
+**Repository:** [https://github.com/kamillamee/00015829_DSCC](https://github.com/kamillamee/00015829_DSCC)
 
 A Django web application for managing projects and tasks, containerized with Docker and deployed via CI/CD pipeline.
 
@@ -67,7 +67,7 @@ pytest tasks/ -v
 ### Server Setup (Eskiz/Ubuntu)
 
 1. Install Docker and Docker Compose
-2. Clone repository to `/opt/cloudcomputing`
+2. Clone repository: `git clone https://github.com/kamillamee/00015829_DSCC.git /opt/cloudcomputing`
 3. Configure `.env` with production values
 4. Configure UFW: `ufw allow 22,80,443`
 5. For HTTPS: Use Let's Encrypt (certbot) and place certs in `nginx/ssl/`
