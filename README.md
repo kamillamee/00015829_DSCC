@@ -1,6 +1,10 @@
 # Task Manager - Distributed Systems & Cloud Computing
 
+**Repository:** [https://github.com/westminster-bis/00015829_DSCC](https://github.com/westminster-bis/00015829_DSCC)
+
 A Django web application for managing projects and tasks, containerized with Docker and deployed via CI/CD pipeline.
+
+**Student ID:** 00015829
 
 ## Features
 
@@ -34,8 +38,8 @@ venv\Scripts\activate  # Windows
 # source venv/bin/activate  # Linux/Mac
 
 pip install -r requirements.txt
-cp .env.example .env
-# Edit .env with your settings
+copy .env.example .env   # Windows
+# Edit .env - set USE_SQLITE=True for local dev without PostgreSQL
 
 python manage.py migrate
 python manage.py createsuperuser
@@ -45,8 +49,8 @@ python manage.py runserver
 ### Development with Docker
 
 ```bash
-cp .env.example .env
-# Set DOCKERHUB_USERNAME=local in .env for local builds
+copy .env.example .env   # Windows
+# Set DOCKERHUB_USERNAME=00015829 in .env
 
 docker compose up --build
 # Access at http://localhost
@@ -70,18 +74,19 @@ pytest tasks/ -v
 
 ### GitHub Actions Deployment
 
-Required GitHub Secrets:
+1. Create a repository on Docker Hub named `cloudcomputing` (or your preferred name)
+2. In GitHub: **Settings → Secrets and variables → Actions**, add:
 
-| Secret | Description |
-|--------|-------------|
-| DOCKERHUB_USERNAME | Docker Hub username |
-| DOCKERHUB_TOKEN | Docker Hub access token |
-| SSH_HOST | Server IP or hostname |
-| SSH_USERNAME | SSH user (e.g. root) |
-| SSH_PRIVATE_KEY | Private key for SSH |
-| DEPLOY_PATH | (Optional) Server path, default `/opt/cloudcomputing` |
+| Secret | Value | Description |
+|--------|-------|-------------|
+| DOCKERHUB_USERNAME | `00015829` | Your Docker Hub username |
+| DOCKERHUB_TOKEN | Access Token from Docker Hub | Account Settings → Security → New Access Token |
+| SSH_HOST | Server IP | (Add when you have a server) |
+| SSH_USERNAME | `root` | (Add when you have a server) |
+| SSH_PRIVATE_KEY | Your private SSH key | (Add when you have a server) |
+| DEPLOY_PATH | `/opt/cloudcomputing` | Optional, default path on server |
 
-Pipeline triggers on push to `main` branch.
+Pipeline triggers on push to `main` branch. Build and push work without server; deploy needs SSH secrets.
 
 ### Manual Deployment
 
@@ -106,7 +111,8 @@ docker compose exec web python manage.py collectstatic --noinput
 | POSTGRES_USER | DB user | postgres |
 | POSTGRES_PASSWORD | DB password | (required) |
 | POSTGRES_HOST | DB host | db (Docker) |
-| DOCKERHUB_USERNAME | For image tagging | local |
+| DOCKERHUB_USERNAME | For image tagging / pull | 00015829 |
+| USE_SQLITE | Use SQLite instead of PostgreSQL (local dev) | False |
 
 ## Project Structure
 
