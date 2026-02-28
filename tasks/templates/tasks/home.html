@@ -1,0 +1,27 @@
+{% extends 'tasks/base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-4">Task Manager</h1>
+    <p class="lead">Manage your projects and tasks efficiently</p>
+    {% if user.is_authenticated %}
+        <a href="{% url 'project_list' %}" class="btn btn-primary btn-lg">View Projects</a>
+        <a href="{% url 'project_create' %}" class="btn btn-outline-primary btn-lg">Create Project</a>
+        {% if projects %}
+        <div class="mt-5">
+            <h3>Recent Projects</h3>
+            <ul class="list-group list-group-flush mx-auto" style="max-width: 400px;">
+                {% for project in projects %}
+                <li class="list-group-item">
+                    <a href="{% url 'project_detail' project.pk %}">{{ project.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login</a>
+        <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">Register</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+version: '3.8'
+
+# Development override - run with: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    environment:
+      - DEBUG=True
+      - ALLOWED_HOSTS=*
+    ports:
+      - "8000:8000"
+
+  nginx:
+    profiles:
+      - production

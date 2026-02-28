@@ -1,0 +1,18 @@
+/* Task Manager custom styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+}
+footer {
+    margin-top: auto;
+}
+.form-control, .form-select {
+    margin-bottom: 0.5rem;
+}
+form p {
+    margin-bottom: 0.5rem;
+}

@@ -1,0 +1,23 @@
+{% extends 'tasks/base.html' %}
+{% block title %}Projects{% endblock %}
+{% block content %}
+<h1>My Projects</h1>
+<a href="{% url 'project_create' %}" class="btn btn-success mb-3">New Project</a>
+<div class="row">
+    {% for project in projects %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.name }}</h5>
+                <p class="card-text">{{ project.description|truncatewords:15 }}</p>
+                <a href="{% url 'project_detail' project.pk %}" class="btn btn-primary">View</a>
+                <a href="{% url 'project_update' project.pk %}" class="btn btn-secondary">Edit</a>
+                <a href="{% url 'project_delete' project.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No projects yet. <a href="{% url 'project_create' %}">Create one</a>.</p>
+    {% endfor %}
+</div>
+{% endblock %}
