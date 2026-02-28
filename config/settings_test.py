@@ -7,3 +7,6 @@ DATABASES = {
         'NAME': ':memory:',
     }
 }
+
+# Simpler static storage for tests (no manifest required)
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
