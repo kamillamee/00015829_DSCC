@@ -96,3 +96,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+# CSRF trusted origins for HTTPS (production)
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = [
+        origin.strip()
+        for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+        if origin.strip()
+    ]
