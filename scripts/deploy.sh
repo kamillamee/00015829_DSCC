@@ -1,7 +1,9 @@
 #!/bin/bash
 # Deployment script - run on server or via CI
+# DSCC 00015829 - Task Manager
 set -e
 cd "$(dirname "$0")/.."
+export DOCKERHUB_USERNAME=${DOCKERHUB_USERNAME:-00015829}
 echo "Pulling latest images..."
 docker compose pull web
 echo "Stopping old containers..."
