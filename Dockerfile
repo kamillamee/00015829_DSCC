@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for Django Task Manager
+# Multi-stage Dockerfile for Django Task Manager (DSCC 00015829)
 # Stage 1: Build and collect static files
 FROM python:3.11-slim as builder
 
