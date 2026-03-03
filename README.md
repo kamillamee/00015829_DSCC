@@ -134,3 +134,5 @@ docker compose exec web python manage.py collectstatic --noinput
 ## License
 
 Educational project - WIUT DSCC Coursework.
+
+---
