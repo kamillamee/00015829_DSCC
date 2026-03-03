@@ -9,6 +9,7 @@ main {
 }
 footer {
     margin-top: auto;
+    padding: 1rem 0;
 }
 .form-control, .form-select {
     margin-bottom: 0.5rem;
