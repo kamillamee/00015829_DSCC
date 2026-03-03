@@ -1,6 +1,5 @@
 #!/bin/bash
-# Deployment script - run on server or via CI
-# DSCC 00015829 - Task Manager
+# Deployment script for Task Manager
 set -e
 cd "$(dirname "$0")/.."
 export DOCKERHUB_USERNAME=${DOCKERHUB_USERNAME:-00015829}
