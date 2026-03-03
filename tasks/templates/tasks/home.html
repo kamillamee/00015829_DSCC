@@ -2,8 +2,8 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <div class="text-center py-5">
-    <h1 class="display-4">Task Manager</h1>
-    <p class="lead">Manage your projects and tasks efficiently</p>
+    <h1 class="display-4">My Task Manager</h1>
+    <p class="lead">Manage your projects and tasks</p>
     {% if user.is_authenticated %}
         <a href="{% url 'project_list' %}" class="btn btn-primary btn-lg">View Projects</a>
         <a href="{% url 'project_create' %}" class="btn btn-outline-primary btn-lg">Create Project</a>
